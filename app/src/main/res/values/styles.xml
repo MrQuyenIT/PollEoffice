@@ -1,0 +1,191 @@
+<resources>
+    <style name="MyTheme" parent="AppTheme">
+
+    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="DarkActionBarWithLightAccent" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="AppCompat.Black.NoActionBar" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:colorBackground">@android:color/background_dark</item>
+        <item name="android:windowBackground">@android:color/background_dark</item>
+    </style>
+
+    <style name="AppCompat.NoActionBar" parent="AppTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="TextAppearance.Title" parent="@android:style/TextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/primary_dark_text</item>
+    </style>
+
+    <style name="TextAppearance.Large" parent="@android:style/TextAppearance">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/primary_dark_text</item>
+    </style>
+
+    <style name="TextAppearance.Title.White" parent="@android:style/TextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="TextAppearance.Title.Light" parent="@android:style/TextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/secondary_light</item>
+    </style>
+
+    <style name="TextAppearance.Toolbar.Expanded" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.Second" parent="@android:style/TextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondary_text</item>
+    </style>
+
+    <style name="TextAppearance.Second.Light" parent="@android:style/TextAppearance">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/secondary_light</item>
+    </style>
+
+    <style name="TextAppearance.Highlight" parent="@android:style/TextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/highlight_text</item>
+    </style>
+
+    <style name="TextAppearance.Second.Dark" parent="@android:style/TextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primary_dark_text</item>
+    </style>
+
+    <style name="TextAppearance.MainTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="TextAppearance.Counter" parent="@android:style/TextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/primary_dark_text</item>
+    </style>
+
+<!--    <style name="FollowButton" parent="Base.Widget.AppCompat.Button">-->
+<!--        <item name="android:layout_width">@dimen/follow_button_width</item>-->
+<!--        <item name="android:layout_height">@dimen/follow_button_height</item>-->
+<!--        <item name="android:padding">2dp</item>-->
+<!--        <item name="android:textSize">12sp</item>-->
+
+<!--    </style>-->
+
+<!--    &lt;!&ndash;Tab layout&ndash;&gt;-->
+<!--    <style name="TabLayout" parent="Widget.Design.TabLayout">-->
+<!--        <item name="tabIndicatorColor">@color/white</item>-->
+<!--        <item name="tabIndicatorHeight">@dimen/tab_indicator_height</item>-->
+<!--        <item name="tabGravity">fill</item>-->
+<!--        <item name="tabMode">fixed</item>-->
+<!--    </style>-->
+
+
+    <style name="imagepicker_CameraTheme" parent="imagepicker_BaseTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="imagepicker_ToolbarTitleText" parent="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="imagepicker_ToolbarMenuText" parent="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Menu">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="imagepicker_TextSmall" parent="TextAppearance.AppCompat.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="imagepicker_TextMedium" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="imagepicker_TextLarge" parent="TextAppearance.AppCompat.Large">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="imagepicker_BaseTheme" parent="Theme.AppCompat.NoActionBar"></style>
+
+    <style name="imagepicker_ImagePickerTheme" parent="imagepicker_BaseTheme"></style>
+
+    <style name="FinestWebViewTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/finestWhite</item>
+        <item name="colorPrimaryDark">@color/finestGray</item>
+        <item name="colorAccent">@color/finestBlack</item>
+        <item name="android:textColorPrimary">@color/finestBlack</item>
+        <item name="android:textColorSecondary">@color/finestSilver</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="FinestWebViewTheme.Fullscreen" parent="FinestWebViewTheme">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="FinestWebViewTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/finestWhite</item>
+        <item name="colorPrimaryDark">@color/finestGray</item>
+        <item name="colorAccent">@color/finestBlack</item>
+        <item name="android:textColorPrimary">@color/finestBlack</item>
+        <item name="android:textColorSecondary">@color/finestSilver</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="FinestWebViewTheme.Light.Fullscreen" parent="FinestWebViewTheme.Light">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <declare-styleable name="ShadowLayout">
+        <attr format="dimension" name="slCornerRadius"/>
+        <attr format="dimension" name="slShadowSize"/>
+        <attr format="color" name="slShadowColor"/>
+        <attr format="dimension" name="slDx"/>
+        <attr format="dimension" name="slDy"/>
+    </declare-styleable>
+    <style name="Font_family_light" parent="AppTheme">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+</resources>

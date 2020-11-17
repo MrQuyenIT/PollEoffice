@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Becamex IDC</string>
+    <string name="app_name_chil">Trung Tâm Chuyển Đổi Số</string>
+    <string name="becamex">TỔNG CÔNG TY ĐẦU TƯ VÀ PHÁT TRIỂN CÔNG NGHIỆP - BECAMEX IDC</string>
+    <string name="recommend_app">Hãy để tôi giới thiệu cho bạn ứng dụng này</string>
+    <string name="feed_back">Phản hồi</string>
+    <string name="ok">Ok</string>
+    <string name="about">Thông tin</string>
+    <string name="rating_and_vote">Cập nhật ứng dụng</string>
+    <string name="menu_share">Chia sẻ ứng dụng</string>
+    <string name="contact_us">Liên hệ</string>
+    <string name="add">Thêm</string>
+    <string name="me">Tôi</string>
+    <string name="add_member">Thêm thành viên</string>
+    <string name="topic_news">news_topic</string>
+
+    <string name="title_home">Trang Chủ</string>
+    <string name="title_dashboard">Thống Kê</string>
+    <string name="title_notifications">Thông báo</string>
+    <string name="just_now"> vừa xong</string>
+    <string name="a_minute_ago"> một phút trước</string>
+    <string name="minute_ago"> phút trước</string>
+    <string name="a_hour_ago"> một giờ trước</string>
+    <string name="hour_ago"> giờ trước</string>
+    <string name="yesterday"> hôm qua</string>
+    <string name="day_ago">  ngày trước</string>
+    <string name="week_ago"> tuần trước</string>
+    <string name="month_ago"> tháng trước</string>
+    <string name="done">Xong</string>
+    <string name="limit_selection">Bạn không thể lựa chọn thêm</string>
+    <string name="label_create_post_activity">Tạo bài</string>
+    <string name="label_post_detail_activity">Bài đăng chi tiết</string>
+    <string name="label_image_detail_activity">Hình ảnh</string>
+    <string name="title_activity_login">Đăng nhập</string>
+    <string name="title_activity_create_profile">Tạo hồ sơ</string>
+    <string name="title_activity_profile">Hồ sơ</string>
+    <string name="title_activity_edit_profile">Sửa hồ sơ</string>
+    <string name="title_activity_edit_post">Sửa bài đăng</string>
+    <string name="title_activity_following_posts">Theo dõi bài đăng</string>
+
+    <string name="text_take_photo">Chụp ảnh</string>
+    <string name="text_pick_photo">Chọn ảnh từ bộ sưu tập</string>
+    <string name="button_title_cancel">Hủy</string>
+    <string name="button_ok">OK</string>
+
+    <string name="hint_title">Bạn có gì để chia sẻ?</string>
+    <string name="hint_description">Mô tả</string>
+    <string name="feature_not_available">Tính năng đang phát triển. Mời bạn quay lại sau</string>
+    <string name="message_post_was_created">Đã tạo bài đăng</string>
+    <string name="error_fail_create_post">Tạo bài đăng thất bại</string>
+    <string name="error_fail_load_image">Tải ảnh thất bại</string>
+    <string name="error_fail_crop_image">Sửa ảnh thất bại</string>
+    <string name="error_smaller_image">Ảnh quá nhỏ. Yêu cầu kích thước 100x100 px</string>
+    <string name="error_incorrect_file_type">Kiểu file không hợp lệ</string>
+    <string name="error_bigger_file">Kích thước file lớn hơn 10Mb</string>
+    <string name="message_creating_post">Đang tạo bài đăng</string>
+    <string name="message_saving">Đang lưu …</string>
+    <string name="warning_empty_image">Hình ảnh là bắt buộc</string>
+    <string name="warning_empty_title">Tiêu đề là bắt buộc</string>
+    <string name="warning_empty_description">Mô tả là bắt buộc</string>
+    <string name="error_post_title_length">Kích thước tối đa phải ít hơn 256 ký tự</string>
+    <string name="error_fail_remove_post">Xóa thất bại</string>
+    <string name="message_post_was_removed">Đã xóa bài đăng</string>
+    <string name="error_fail_update_post">Cập nhật bài đăng thất bại</string>
+    <string name="error_post_was_removed">Xóa bài đăng thất bại</string>
+    <string name="confirm_deletion_post">Bạn muốn xóa bài đăng ?</string>
+    <string name="share_post">Chia sẻ bài đăng</string>
+    <string name="confirm_share_post">Bạn muốn chia sẻ bài đăng?</string>
+    <string name="comment_text_hint">Nhập bình luận …</string>
+    <string name="button_post_comment">Đăng bình luận</string>
+
+    <string name="label_comments">Bình luận (%1$d):</string>
+    <string name="save">Lưu</string>
+    <string name="saved">Đã lưu!!!</string>
+    <string name="create_post_menu_label">Bài đăng</string>
+    <string name="create_post_full_menu_label">Tạo bài đăng</string>
+    <string name="sign_out_menu_label">Đăng xuất</string>
+    <string name="edit_profile_menu_label">Chỉnh sửa hồ sơ</string>
+    <string name="button_title_save">Xong</string>
+    <string name="button_title_continue">Tiếp tục</string>
+    <string name="select_user_tag">Chọn bạn</string>
+    <string name="tag">Gắn thẻ</string>
+    <string name="tagged">Đã gắn thẻ</string>
+    <string name="and">và</string>
+    <string name="one_user_tagged_message">- với</string>
+    <string name="more_user_tagged_message">người</string>
+    <!-- Strings related to registration and login -->
+    <string name="prompt_email">Hộp thư</string>
+    <string name="prompt_name">Tên</string>
+    <string name="prompt_password">Mật khẩu</string>
+    <string name="prompt_conf_password">Xác nhận mật khẩu</string>
+    <string name="action_create_profile">Tiếp tục</string>
+    <string name="error_field_required">Đây là trường bắt buộc</string>
+    <string name="error_profile_name_length">Kích thước tối đa 120 ký tự</string>
+    <string name="error_invalid_email">Email không hợp lệ</string>
+    <string name="error_confirm_password">Xác nhận sai mật khẩu</string>
+    <string name="action_sign_in">Đăng nhập</string>
+    <string name="permissions_not_granted">Hủy, yêu cầu quyền không được chấp nhận</string>
+    <string name="error_fail_create_profile">Tạo hồ sơ thất bại</string>
+    <string name="error_fail_update_profile">Cập nhật hồ sơ thất bại</string>
+    <string name="text_login">Cảm ơn bạn đã sử dụng ứng dụng. Đăng nhập để tiếp tục</string>
+    <string name="error_authentication">Chứng thực thất bại.</string>
+    <string name="error_google_play_services">Google Play Lỗi.</string>
+    <string name="button_login_with_facebook">Đăng nhập với facebook</string>
+    <string name="button_login_with_google">Đăng nhập với google</string>
+    <string name="read_more">Đọc thêm</string>
+    <string name="user_name">user@becamex.com.vn</string>
+    <string name="password">mật khẩu</string>
+    <string name="login">Đăng Nhập</string>
+    <string name="log_out">Đăng xuất</string>
+    <string name="loading">Đang tải …</string>
+    <string name="removing">Đang xóa …</string>
+    <string name="remove">Xóa</string>
+    <string name="error_general">Đã xảy ra lỗi.</string>
+    <string name="error_general_post">Đã xảy ra lỗi với bài đăng, id: %1$s</string>
+    <string name="internet_connection_failed">Không có kết nối internet</string>
+    <string name="press_once_again_to_exit">Đè lần nữa để thoát</string>
+
+    <!-- Strings related to login -->
+
+    <string name="error_invalid_password">Mật khẩu quá ngắn</string>
+    <string name="error_incorrect_password">Mật khẩu không chính xác</string>
+    <string name="permission_rationale">"Liên hệ quyền để cung cấp email"
+    </string>
+
+    <string name="profile_menu_item">Hồ sơ</string>
+    <string name="collapse_text_label">ngắn hơn</string>
+    <string name="expand_text_label">dài hơn</string>
+    <string name="add_complain">Phàn nàn</string>
+    <string name="edit_post_menu">Sửa bài đăng</string>
+    <string name="delete_post_menu">Xóa bài đăng</string>
+    <string name="complain_text">Bạn có thể khiếu nại bài đăng này nếu nó chứa bạo lực,
+         bắt nạt và đe dọa, ngôn từ kích động thù địch, sự kiện bi thảm và nội dung khiêu dâm.
+         Không ai sẽ nhìn thấy bài viết nếu bạn phàn nàn với nó. Bạn không thể xóa khiếu nại của mình.</string>
+
+    <string name="send_comment_button_label">Gởi</string>
+    <string name="posted_by_label">Đăng bởi:</string>
+
+    <plurals name="posts_counter_format">
+        <item quantity="one">bài đăng</item>
+        <item quantity="other">bài đăng khác</item>
+    </plurals>
+
+    <plurals name="likes_counter_format">
+        <item quantity="one">thích</item>
+        <item quantity="other">thích</item>
+    </plurals>
+
+    <plurals name="followers_counter_format">
+        <item quantity="one">người theo dõi</item>
+        <item quantity="other">người theo dõi</item>
+    </plurals>
+
+    <plurals name="followings_counter_format">
+        <item quantity="one">đang theo dõi</item>
+        <item quantity="other">đang theo dõi</item>
+    </plurals>
+
+    <string name="processing">Đang xử lý!!!</string>
+    <string name="uploading">Đang tải lên!!!</string>
+    <string name="posting">Đang đăng!!!</string>
+    <string name="deleting">Đang xóa!!!</string>
+    <string name="restoring">Đang phục hồi!!!</string>
+    <string name="post_succes">Xóa bài đăng thành công!!!</string>
+    <string name="post_failed">Bài đăng thất bại!!!</string>
+    <string name="loading_failed">Tải thất bại!!!</string>
+    <string name="comment_failed">Bình luận thất bại!!!</string>
+    <string name="update_failed">Cập nhật thất bại!!!</string>
+    <string name="posts_label">Bài đăng:</string>
+    <string name="complain_sent">Gởi khiếu nại thành công</string>
+    <string name="now_time_range">bây giờ</string>
+    <string name="comment_count">%1$d Ý kiến</string>
+    <string name="duration_minutes_shortest">%1$d m</string>
+    <string name="duration_hours_shortest">%1$d h</string>
+    <string name="duration_days_shortest">%1$d d</string>
+    <string name="duration_week_shortest">%1$d w</string>
+
+    <string name="post_image_transition_name" translatable="false">post_image_transition</string>
+    <string name="post_author_image_transition_name" translatable="false">post_author_image_transition_name</string>
+    <string name="message_new_post_was_created">Bài đăng mới đã tạo</string>
+
+    <plurals name="new_posts_counter_format">
+        <item quantity="one">%1$d bài đăng mới</item>
+        <item quantity="other">%1$d bài đăng mới</item>
+    </plurals>
+    <string name="posts">Bài đăng</string>
+    <string name="followers">Người theo dõi</string>
+
+    <string name="edit_comment_menu_item">Sửa</string>
+    <string name="delete_comment_menu_item">Xóa</string>
+    <string name="message_comment_was_removed">Bình luận đã xóa</string>
+    <string name="message_comment_was_edited">Bình luận đã sửa</string>
+    <string name="title_edit_comment">Sửa bình luận</string>
+
+    <!--Follow-->
+    <string name="button_follow_title">Theo dõi</string>
+    <string name="button_follow_back_title">Theo dõi ngược lại</string>
+    <string name="button_following">Đang theo dõi</string>
+    <string name="unfollow_user_message">Bỏ theo dõi %1$s?</string>
+    <string name="button_title_unfollow">Bỏ theo dõi</string>
+    <string name="message_following_posts_empty">Những người theo dõi sẽ thấy bài đăng</string>
+    <string name="following_post_menu_item">Bài đăng đang theo dõi</string>
+
+    <!--Users list-->
+    <string name="members">Thành viên</string>
+    <string name="title_followers">Thành viên</string>
+    <string name="title_followings">Đang theo dõi</string>
+    <string name="message_empty_list">Bạn chưa có bất kỳ %1$s</string>
+
+    <!--Search-->
+    <string name="search">Tìm  kiếm</string>
+    <string name="search_menu_item">Tìm kiếm</string>
+    <string name="search_hint">Tìm kiếm …</string>
+    <string name="search_member_hint">Nhập tên hoặc phòng ban</string>
+    <string name="search_message_hint">Nhập tiêu đề...</string>
+    <string name="search_member_only_hint">Nhập tên...</string>
+    <string name="sender">Người gởi</string>
+    <string name="posts_tab_title">Bài đăng</string>
+    <string name="users_tab_title">Người dùng</string>
+    <string name="empty_posts_search_message">Không tìm thấy bài đăng</string>
+    <string name="empty_user_search_message">Không tìm thấy người dùng</string>
+
+    <string name="leave_group">Thoát khỏi nhóm</string>
+    <string name="joined">Đã tham gia</string>
+    <string name="join">Tham gia</string>
+    <string name="leave_group_confirm">Bạn muốn thoát khỏi?</string>
+    <string name="turn_off_notification">Tắt thông báo</string>
+    <string name="turn_on_notification">Mở thông báo</string>
+    <string name="not_member_group">Bạn chưa phải thành viên? Tham gia ngay</string>
+    <!--Firebase errors-->
+    <string name="permission_denied_error">Làm ơn kiểm tra quyền truy cập Firebase Realtime Database</string>
+
+    <!--Notifications-->
+    <string name="new_like_channel_name">Thích Mới</string>
+    <string name="new_comment_channel_name">Bình Luận Mới</string>
+    <string name="new_user_tagged_channel_name">Đã Gắn Thẻ</string>
+    <string name="new_post_group_channel_name">Bài đăng Nhóm</string>
+    <string name="article_publish_channel_name">Xuất bản tin tức</string>
+    <string name="user_following_post_channel_name">Theo dõi bài đăng</string>
+    <string name="messenger_message_channel_name">Tin Nhắn</string>
+    <string name="greeting_channel_name">Chúc mừng</string>
+    <string name="add_member_channel_name">Thêm thành viên</string>
+    <string name="data_notfound">Không có dữ liệu!</string>
+    <string name="process_failed">Xử lý thất bại!!!</string>
+    <string name="login_failed">Đăng nhập thất bại!!!</string>
+    <string name="user_pass_incorrect">Email hoặc mật khẩu không đúng!</string>
+    <string name="edit">Sửa</string>
+    <string name="post_detail">Chi tiết</string>
+    <string name="delete">Xóa</string>
+    <string name="restore">Phục hồi</string>
+    <string name="delete_confirm">Bạn có muốn xóa?</string>
+    <string name="restore_confirm">Bạn có chắc chắn muốn khôi phục?</string>
+    <string name="recall">Thu hồi</string>
+    <string name="recalled">Đã thu hồi!</string>
+    <string name="recalled_failed">Thu hồi thất bại</string>
+    <string name="recall_confirm">Tin nhắn đã gởi sẽ được thu hồi. Bạn có muốn thu hồi tin nhắn này không?</string>
+    <string name="deleted">Xóa!!!</string>
+    <string name="restored">Đã phục hồi!!!</string>
+    <string name="deleted_failed">Xóa thất bại</string>
+    <string name="restored_failed">Đã phục hồi!!!</string>
+    <string name="add_user_failed">Thêm thất bại</string>
+    <string name="remove_failed">Xóa thất bại</string>
+    <string name="following">Đang theo dõi</string>
+    <string name="follow">Theo dõi</string>
+    <string name="message">Tin nhắn</string>
+    <string name="imagepicker_action_ok">OK</string>
+    <string name="imagepicker_action_done">XONG</string>
+
+    <string name="imagepicker_title_folder">Albums</string>
+    <string name="imagepicker_title_image">Galleries</string>
+
+    <string name="imagepicker_text_gif">GIF</string>
+    <string name="imagepicker_photo_count_multiple">%d ảnh</string>
+    <string name="imagepicker_photo_count_single">%d ảnh</string>
+
+    <string name="imagepicker_error_no_camera">Không tìm thấy máy ảnh</string>
+    <string name="imagepicker_error_create_image_file">Tạo file ảnh thất bại</string>
+    <string name="imagepicker_error_images_not_exist">Ảnh không tồn tại</string>
+    <string name="imagepicker_error_unknown">Lỗi không xác định</string>
+
+    <string name="imagepicker_msg_no_images">Không hình ảnh</string>
+    <string name="imagepicker_msg_no_write_external_storage_permission">Để tiếp tục xin cấp quyền truy cập hình ảnh</string>
+    <string name="imagepicker_msg_no_camera_permission">Để tiếp tục xin cấp quyền chụp ảnh</string>
+    <string name="imagepicker_msg_no_write_external_storage_camera_permission">Để tiếp tục xin cấp quyền chụp ảnh</string>
+    <string name="imagepicker_msg_limit_images">Giới hạn ảnh lựa chọn %d</string>
+    <string name="internal_storage">Bộ Nhớ Trong</string>
+    <string name="permission_title_rationale">Cấp quyền truy cập</string>
+    <string name="permission_read_storage_rationale">Cần cung cấp quyền đọc file.</string>
+    <string name="permission_write_storage_rationale">Cần cung cấp quyền ghi file.</string>
+
+    <string name="default_notification_channel_id">Thông Báo Becamex IDC</string>
+    <string name="to_do_list">Hoàn Tất Hôm Nay</string>
+    <string name="work_due">Trễ Hạn</string>
+    <string name="work_processing">Đang xử lý</string>
+    <string name="work_following">Theo Dõi</string>
+    <string name="workflow">Quy Trình</string>
+    <string name="refresh">Tải lại</string>
+    <string name="find">Tìm</string>
+    <string name="share_via">Chia sẻ qua</string>
+    <string name="copy_link">Sao chép liên kết</string>
+    <string name="open_with">Mở với</string>
+    <string name="copied_to_clipboard">Đã sao chép clipboard</string>
+    <string name="to">Đến:</string>
+    <string name="to_hint">Nhập tên hoặc Đơn vị</string>
+    <string name="from">Từ:</string>
+    <string name="cc">CC:</string>
+    <string name="subject">Tiêu đề</string>
+    <string name="attachment">Đính kèm</string>
+    <string name="content">Nội dung</string>
+    <string name="select_user">Chọn</string>
+    <string name="send">Gởi</string>
+    <string name="message_sent_success">Đã gởi tin nhắn thành công!</string>
+    <string name="message_sent_failed">Gởi thất bại!</string>
+    <string name="expired">Hết hạn:</string>
+    <string name="due_date">Đến hạn</string>
+    <string name="create_date">Ngày tạo</string>
+    <string name="organizer">Chủ trì:</string>
+    <string name="members_calendar">Tham dự:</string>
+    <string name="location_calendar">Địa điểm:</string>
+    <string name="detail_calendar">Chi tiết Lịch</string>
+    <string name="title_calendar">Tiêu đề</string>
+    <string name="content_calendar">Nội dung</string>
+    <string name="description_calendar">Nội dung</string>
+    <string name="start_date_calendar">Bắt đầu</string>
+    <string name="end_date_calendar">Kết thúc</string>
+    <string name="location">Địa điểm</string>
+    <string name="supporter">Chuẩn bị</string>
+    <string name="master_from_out_side">Chủ trì</string>
+    <string name="add_from_out_side">Thành phần tham dự</string>
+    <string name="attendees">Thông báo đến</string>
+    <string name="no_event">Không có sự kiện!!!</string>
+    <string name="personal_calendar">Lịch Cá Nhân</string>
+    <string name="calendar_remove">Xóa Lịch</string>
+    <string name="calendar_add_to_event">Nhắc nhở</string>
+    <string name="calendar_add">Tạo mới</string>
+    <string name="calendar_pending">Chờ duyệt</string>
+    <string name="calendar_approved">Đã duyệt</string>
+    <string name="calendar_rejected">Từ chối</string>
+    <string name="calendar_all">Tất cả</string>
+    <string name="view_salary">Xem bảng lương</string>
+    <string name="detail_salary">Chi tiết bảng lương</string>
+    <string name="detail_salary_condition">Chọn Tháng và Năm</string>
+
+    <string name="wf_my_request">Yêu cầu của tôi</string>
+    <string name="wf_add_new">Tạo mới yêu cầu</string>
+    <string name="wf_draft">Đang lưu</string>
+    <string name="wf_in_progress">Đang xử lý</string>
+    <string name="wf_approved">Đã phê duyệt</string>
+    <string name="wf_not_approved">Không phê duyệt</string>
+    <string name="wf_to_shared">Được chia sẻ</string>
+    <string name="wf_all">Tất cả quy trình</string>
+    <string name="wf_request_management">Phê duyệt</string>
+
+
+    <string name="wf_waiting_for_approve">Chờ phê duyệt</string>
+    <string name="wf_management_in_progress">Đang xử lý</string>
+    <string name="dis_approved">Không được phê duyệt</string>
+    <string name="search_wf_hint">Nhập Mã hoặc Nội dung</string>
+    <string name="other_salary">Bảng Lương</string>
+    <string name="other_eoffice">eOffice</string>
+    <string name="other_announcement">Thông Báo</string>
+    <string name="other_todolist">Công Việc</string>
+    <string name="navigation_drawer_open">Mở thanh điều hướng</string>
+    <string name="navigation_drawer_close">Đóng thanh điều hướng</string>
+    <string name="cancel">Hủy</string>
+    <string name="calendar">Lịch</string>
+    <string name="news">Tin Tức</string>
+    <string name="tools">Tiện Ích</string>
+    <string name="language">English</string>
+    <string name="confirm_salary">Vì lý do dữ liệu cá nhân, vui lòng nhập mật khẩu</string>
+    <string name="confirm_salary_biometric">Vì lý do dữ liệu cá nhân vui lòng xác thực vân tay</string>
+    <string name="password_lenght">Mật khẩu quá ngắn!</string>
+    <string name="link_broken">Liên kết bị hỏng!</string>
+    <string name="copyright">Bản quyền &#169; Trung Tâm Chuyển Đổi Số</string>
+    <string name="copyright2">Trung Tâm Chuyển Đổi Số</string>
+    <string name="support">Trợ giúp</string>
+    <string name="update_now">Cập nhật</string>
+    <string name="update_message">Phiên bản mới của ứng dụng đã có sẵn trên CH Play. Bạn có muốn cập nhật?</string>
+    <string name="no_thanks">Không, cảm ơn</string>
+    <string name="remind_late">Nhắc sau</string>
+    <string name="what_new">Tính năng mới?</string>
+    <string name="what_new_content">1.Công việc: Thêm mới chức năng công việc -2.Lịch: Chế độ xem Trang trước và trang sau. Bổ sung Yêu cầu báo cáo -3.Quy trình: cập nhật giao diện mới -4. Tin nhắn: Thu hồi Tin nhắn đã gởi. -5. Chuyển Tin Tức về Tiện Ích</string>
+    <string name="app_version">Phiên bản %1$s</string>
+    <string name="settings">Cấu hình</string>
+    <string name="notifications">Thông Báo</string>
+    <string name="notifications_setting">Cấu hình nhận thông báo</string>
+    <string name="saved_at">Lưu về</string>
+    <string name="reply">Trả lời</string>
+    <string name="reply_all">Trả lời tất cả</string>
+    <string name="forward">Chuyển tiếp</string>
+    <string name="message_mark_all_read">Đánh dấu đã đọc tất cả</string>
+    <string name="compose">Soạn Tin</string>
+    <string name="user">Cá nhân</string>
+    <string name="department">Đơn vị</string>
+    <string name="message_draft">Thư nháp</string>
+    <string name="message_delete">Thư đã xóa</string>
+    <string name="message_unread">Thư chưa đọc</string>
+    <string name="message_important">Thư quan trọng</string>
+    <string name="message_marked">Thư gắn sao</string>
+    <string name="message_sent">Thư đã gửi</string>
+    <string name="message_search">Tìm kiếm thư</string>
+    <string name="all_mail">Tất cả thư</string>
+    <string name="inbox">Hộp thư đến</string>
+    <string name="out_box">Thư đã gởi</string>
+    <string name="delete_box">Thư đã xóa</string>
+
+    <string name="biometric_title">Xác Thực Sinh Trắc</string>
+    <string name="biometric_subtitle">Đăng nhập đến tài khoản eOffice của bạn</string>
+    <string name="biometric_description">Sử dụng vân tay để xác thực tài khoản eOffice của bạn. Bạn có thể TĂT hoặc MỞ chức năng xác thực vân tay ở phần Cài đặt</string>
+    <string name="biometric_negative_button_text">THOÁT</string>
+
+
+    <string name="biometric_error_sdk_not_supported">Phiên bản hệ điều hành không hỗ trợ</string>
+    <string name="biometric_error_hardware_not_supported">Thiết bị không hỗ trợ</string>
+    <string name="biometric_error_fingerprint_not_available">Chưa đăng ký vân tay</string>
+    <string name="biometric_error_permission_not_granted">Bạn chưa cấp quyền truy cập vân tay</string>
+    <string name="biometric_failure">Đăng nhập thất bại!</string>
+    <string name="biometric_cancelled">Hủy bỏ xác thực</string>
+    <string name="biometric_success">Xác thực thành công</string>
+    <string name="biometric_on_off">TĂT hoặc MỞ chức năng xác thực vân tay</string>
+    <string name="biometric">Xác thực vân tay</string>
+
+    <string name="task">Công Việc</string>
+    <string name="task_due_date">Hạn hoàn tất</string>
+    <string name="task_latest_update">Mới Cập Nhật</string>
+    <string name="task_today_due">Đến hạn</string>
+    <string name="task_complete">Hoàn thành</string>
+    <string name="task_priority">Ưu tiên</string>
+    <string name="task_comment">Ý kiến</string>
+
+    <string name="task_todolist">Việc cần xử lý</string>
+    <string name="task_todolist_unassigned">Chưa phân công</string>
+    <string name="task_todolist_waiting_accept">Chờ xác nhận</string>
+    <string name="task_todolist_incomplete">Chưa hoàn tất</string>
+    <string name="task_todolist_collaborator">Việc phối hợp</string>
+    <string name="task_todolist_following">Việc theo dõi</string>
+    <string name="task_todolist_overdue">Trễ hạn</string>
+    <string name="task_todolist_All">Tất cả</string>
+    <string name="task_assigned">Việc giao</string>
+    <string name="task_assigned_incomplete">Chưa hoàn tất</string>
+    <string name="task_assigned_overdue">Trễ hạn</string>
+    <string name="task_assigned_all">Tất cả</string>
+    <string name="task_all">Tất cả</string>
+
+    >
+    <string name="btn_vote">Danh sách bình chọn</string>
+    <string name="edit_add_vote">Đặt câu hỏi bình chọn</string>
+    <string name="detail_question">Câu hỏi bình chọn</string>
+    <string name="add_new_plan">Thêm phương án</string>
+    <string name="invite_poll">Mời</string>
+    <string name="remove_plan">Loại bỏ phương án</string>
+
+
+    <!---
+      Production
+      -->
+    <string name="host_base_url" translatable="false">https://mobile.becamex.com.vn/</string>
+    <string name="host_eoffice_url" translatable="false">https://eoffice.becamex.com.vn/</string>
+    <string name="host_eoffice_api" translatable="false">http://api.becamex.com.vn:8008/</string>
+    <string name="host_gateway_api" translatable="false">http://api.becamex.com.vn:8008/</string>
+    <!---
+   UAT
+   -->
+    <string name="host_base_url_uat" translatable="false">https://mobile.becamex.com.vn:8500/</string>
+    <string name="host_eoffice_url_uat" translatable="false">https://eofficeuat.becamex.com.vn/</string>
+    <string name="host_eoffice_api_uat" translatable="false">http://api.becamex.com.vn:8002/</string>
+    <string name="host_gateway_api_uat" translatable="false">http://api.becamex.com.vn:8002/</string>
+</resources>

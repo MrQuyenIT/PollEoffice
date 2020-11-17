@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.AddPollActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/add_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:fitsSystemWindows="true"
+            app:layout_collapseMode="pin"
+            app:navigationIcon="@mipmap/ic_close_white"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ProgressBar
+                    android:indeterminate="true"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></ProgressBar>
+                <RelativeLayout
+                    android:layout_below="@id/progressBar"
+                    android:paddingStart="@dimen/margin_two_view"
+                    android:paddingEnd="@dimen/margin_two_view"
+                    android:id="@+id/layout_to"
+                    android:background="@drawable/btn_rounded"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorAccent"
+                        android:id="@+id/txt_message_to"
+                        android:text="Mời"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"></TextView>
+
+                    <com.tylersuehr.chips.ChipsInputLayout
+                        android:id="@+id/chips_input_layout_to"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/txt_message_to"
+                        android:hint="Mời người tham gia bình chọn"
+                        android:textColor="@color/colorAccent">
+
+                    </com.tylersuehr.chips.ChipsInputLayout>
+                </RelativeLayout>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_below="@+id/layout_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:hint="@string/edit_add_vote"
+                        app:boxBackgroundColor="#fff">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/question"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:id="@+id/list_plan"
+                    android:layout_below="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical">
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_below="@+id/list_plan"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btn_add_vote"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="addPlan"
+                            android:text="@string/add_new_plan"
+                            tools:ignore="OnClick" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btn_invite_poll2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="removePlan"
+                            android:text="@string/remove_plan"
+                            tools:ignore="OnClick" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </RelativeLayout>
+    </ScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
