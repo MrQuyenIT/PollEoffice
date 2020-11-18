@@ -11,6 +11,8 @@ public class PollUserAssign {
     private  String UserAssign;
     @SerializedName("name")
     private  String Name;
+    @SerializedName("avatar")
+    private  String Avatar;
     @SerializedName("dateCreated")
     private  String DateCreated;
 
@@ -44,6 +46,13 @@ public class PollUserAssign {
 
     public void setName(String name) {
         Name = name;
+    }
+    public String getAvatar() {
+        return Avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        Avatar = avatar;
     }
 
     public String getDateCreated() {

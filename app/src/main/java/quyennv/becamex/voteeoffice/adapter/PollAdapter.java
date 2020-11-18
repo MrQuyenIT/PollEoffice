@@ -12,18 +12,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,6 +36,8 @@ import quyennv.becamex.voteeoffice.BaseViewHolder;
 import quyennv.becamex.voteeoffice.R;
 import quyennv.becamex.voteeoffice.Settings;
 import quyennv.becamex.voteeoffice.models.Poll;
+import quyennv.becamex.voteeoffice.models.PollPlan;
+import quyennv.becamex.voteeoffice.models.PollUserPlan;
 import quyennv.becamex.voteeoffice.remote.IPollService;
 import quyennv.becamex.voteeoffice.remote.NetworkClient;
 import quyennv.becamex.voteeoffice.utils.Utils;
@@ -40,6 +46,7 @@ import quyennv.becamex.voteeoffice.views.PollDetailActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private static final int VIEW_TYPE_LOADING = 0;
@@ -64,7 +71,7 @@ public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         switch (viewType) {
             case VIEW_TYPE_NORMAL:
                 return new PollAdapter.ViewHolder(
-                        LayoutInflater.from(parent.getContext()).inflate(R.layout.row_poll, parent, false));
+                        LayoutInflater.from(parent.getContext()).inflate(R.layout.row_poll_new, parent, false));
             case VIEW_TYPE_LOADING:
                 return new PollAdapter.ProgressHolder(
                         LayoutInflater.from(parent.getContext()).inflate(R.layout.item_loading, parent, false));
@@ -151,6 +158,13 @@ public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         @BindView(R.id.img_edit)
         public ImageView img_edit;
+
+        @BindView(R.id.numberPoll)
+        public TextView numberPoll;
+
+        @BindView(R.id.list_plan_view)
+        public LinearLayout linearLayoutViewPlan;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -159,8 +173,12 @@ public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         protected void clear() {
         }
 
+
+
         public void onBind(final int position) {
             super.onBind(position);
+            linearLayoutViewPlan.removeAllViews();
+
 
             final Poll poll = listPolls.get(position);
             title.setText(poll.getQuestion());
@@ -185,7 +203,7 @@ public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 public void onClick(View view) {
                     Intent intent = new Intent(context, PollDetailActivity.class);
                     intent.putExtra("id", poll.getId());
-                    context.startActivity(intent);
+                    ((Activity) context).startActivityForResult(intent,0);
                 }
             });
 
@@ -197,6 +215,15 @@ public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                     ((Activity) context).startActivityForResult(intent,0);
                 }
             });
+
+            //Add view vaof child
+            int countAllUserpoll = 0;
+            for (PollPlan plan : poll.getPollPlans()){
+                countAllUserpoll += plan.getPollUserPlans().size();
+                linearLayoutViewPlan.addView(RenderViewPlan(plan));
+            }
+
+            numberPoll.setText(countAllUserpoll +" người đã bình chọn" );
 
             img_poll_delete.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -278,5 +305,36 @@ public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             public void onBind(int position) {
                 super.onBind(position);
             }
+    }
+
+    public RelativeLayout RenderViewPlan(PollPlan plan){
+        RelativeLayout relativeLayout = new RelativeLayout(context);
+        RelativeLayout.LayoutParams relativeLayoutParams = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        int valPx =context.getResources().getDimensionPixelSize(R.dimen.card_margin);
+        relativeLayoutParams.setMargins(0,valPx,0,valPx);
+        relativeLayout.setLayoutParams(relativeLayoutParams);
+        relativeLayout.setPadding(valPx,valPx,valPx,valPx);
+        relativeLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.poll_rounded));
+
+        TextView textViewPlan = new TextView(context);
+        textViewPlan.setText(plan.getPlanName());
+        RelativeLayout.LayoutParams pramsPlan= new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        pramsPlan.addRule(RelativeLayout.RIGHT_OF, R.id.countPoll);
+        pramsPlan.setMargins(0,0,Utils.dpToPx(15, context),0);
+        textViewPlan.setLayoutParams(pramsPlan);
+
+        TextView textViewCountPlan = new TextView(context);
+        textViewCountPlan.setText(String.valueOf(plan.getPollUserPlans().size()));
+
+        RelativeLayout.LayoutParams pramsCountPlan= new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        pramsCountPlan.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+        textViewCountPlan.setLayoutParams(pramsCountPlan);
+
+        relativeLayout.addView(textViewPlan);
+        relativeLayout.addView(textViewCountPlan);
+
+        return relativeLayout;
     }
 }

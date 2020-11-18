@@ -82,17 +82,31 @@
             </RelativeLayout>
 
         </RelativeLayout>
-            <TextView
+            <RelativeLayout
                 android:layout_marginTop="@dimen/margin_two_view"
                 android:layout_marginBottom="@dimen/margin_two_view"
-                android:textColor="#1e88e5"
-                android:text="3 người bình chọn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:id="@+id/numberPoll">
-            </TextView>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#1e88e5"
+                    android:text="3 người bình chọn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:id="@+id/numberPoll">
+                </TextView>
+                <TextView
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_alignParentEnd="true"
+                    android:text="Nguyễn Văn Quyền"
+                    android:id="@+id/user_created"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </RelativeLayout>
+
             <LinearLayout
+                android:id="@+id/list_plan_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -106,10 +120,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Phương án 1 "
+                        android:text="wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+                        android:layout_toStartOf="@+id/countPoll"
                         />
 
                     <TextView
+                        android:id="@+id/countPoll"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -157,17 +173,18 @@
                         />
                 </RelativeLayout>
 
-                <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#1e88e5"
-                        android:textAllCaps="true"
-                        android:text="Xem bình chọn"/>
-                </RelativeLayout>
+
             </LinearLayout>
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#1e88e5"
+                    android:textAllCaps="true"
+                    android:text="Xem bình chọn"/>
+            </RelativeLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

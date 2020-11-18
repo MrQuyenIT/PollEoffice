@@ -187,5 +187,4 @@
     <style name="Font_family_light" parent="AppTheme">
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
-
 </resources>

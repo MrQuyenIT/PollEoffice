@@ -17,6 +17,8 @@ public class Poll {
     private  int Position;
     @SerializedName("userCreated")
     private  String UserCreated;
+    @SerializedName("avatar")
+    private  String Avatar;
     @SerializedName("name")
     private  String Name;
     @SerializedName("dateCreated")
@@ -66,6 +68,14 @@ public class Poll {
 
     public void setUserCreated(String userCreated) {
         UserCreated = userCreated;
+    }
+
+    public String getAvatar() {
+        return Avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        Avatar = avatar;
     }
 
     public String getName() {

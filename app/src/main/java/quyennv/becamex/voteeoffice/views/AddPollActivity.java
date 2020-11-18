@@ -357,7 +357,7 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
                             ContactChip contactChip = new ContactChip();
                             contactChip.setEmail(assign.getUserAssign());
                             contactChips.add(contactChip);
-                            contactChip.setAvatar("https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png");
+                            contactChip.setAvatar(assign.getAvatar());
                             contactChip.setName(assign.getName());
                         }
                         chipsInputTo.setSelectedChipList(contactChips);

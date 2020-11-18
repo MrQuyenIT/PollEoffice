@@ -3,6 +3,9 @@ package quyennv.becamex.voteeoffice.views;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -23,6 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
@@ -32,10 +36,15 @@ import java.util.List;
 
 import quyennv.becamex.voteeoffice.R;
 import quyennv.becamex.voteeoffice.Settings;
+import quyennv.becamex.voteeoffice.adapter.PlanDetailAdapter;
+import quyennv.becamex.voteeoffice.adapter.PollAdapter;
 import quyennv.becamex.voteeoffice.models.Poll;
 import quyennv.becamex.voteeoffice.models.PollPlan;
+import quyennv.becamex.voteeoffice.models.PollUserPlan;
 import quyennv.becamex.voteeoffice.remote.IPollService;
 import quyennv.becamex.voteeoffice.remote.NetworkClient;
+import quyennv.becamex.voteeoffice.ui.CircularImageView;
+import quyennv.becamex.voteeoffice.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,11 +61,13 @@ public class PollDetailActivity extends AppCompatActivity {
     private ProgressDialog progress;
 
     private int pollId = 0;
-    private int numberOfLines = 0;
     private ArrayList<EditText> listEditText = new ArrayList<>();
     private IPollService apiService;
-    private List<PollPlan> pollPlansCheck = new ArrayList<>();
 
+
+    //Plan
+    private PlanDetailAdapter adapter;
+    private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,18 +98,27 @@ public class PollDetailActivity extends AppCompatActivity {
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.show();
 
+        LinearLayoutManager llm = new LinearLayoutManager(activity);
+        recyclerView = (RecyclerView) findViewById(R.id.recycleViewPlan);
+        recyclerView.setLayoutManager(llm);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         loadPollDetail(pollId);
         sendButton = (Button) findViewById(R.id.sendButton);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                List<PollPlan> pollPlansCheck = adapter.getAllPlanCheck();
+
                 progress.show();
                 apiService.addRangePollUserPlan(settings.getUserNameKey(),pollId,pollPlansCheck).enqueue(new Callback<Boolean>() {
                     public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                         if(response.isSuccessful()){
                             Toast.makeText(activity,"Bình chọn thành công",Toast.LENGTH_LONG).show();
-                            loadPollDetail(pollId);
-                            pollPlansCheck.clear();
+                            Intent intent=new Intent();
+                            setResult(RESULT_OK,intent);
+                            activity.finish();
                         }
                         else{
                             Toast.makeText(activity,"Bình chọn thất bại! Vui lòng thử lại",Toast.LENGTH_LONG).show();
@@ -116,9 +136,9 @@ public class PollDetailActivity extends AppCompatActivity {
         });
     }
 
+
+
     public void loadPollDetail(int id){
-
-
         //Xóa hết view cũ;
         linearLayoutParent.removeAllViews();
 
@@ -128,16 +148,23 @@ public class PollDetailActivity extends AppCompatActivity {
 
                 if(response.isSuccessful()){
                     Poll poll = response.body();
-                    TextInputEditText editText=findViewById(R.id.question);
-                    editText.setText(poll.getQuestion());
+                    TextView question=findViewById(R.id.question);
+                    question.setText(poll.getQuestion());
 
-                    for (PollPlan plan : poll.getPollPlans())
-                    {
-                        if(plan.getCheck()){
-                            pollPlansCheck.add(plan);
-                        }
-                        RenderCheckboxPlan(plan);
-                    }
+                    CircularImageView circularImageView = (CircularImageView) findViewById(R.id.avatar);
+                    Glide.with(activity).load(poll.getAvatar()).override(Utils.dpToPx(60, activity)).into(circularImageView);
+
+                    TextView  name = findViewById(R.id.nameCreated);
+                    name.setText(poll.getName());
+
+
+                    String dateCreated  =  Utils.ConvertStringDateToString(poll.getDateCreated(), "yyyy-MM-dd'T'HH:mm:ss", "dd/MM/yyyy HH:mm", "UTC");
+                    TextView  date = findViewById(R.id.dateCreated);
+                    date.setText(dateCreated);
+
+                    //Addapter planm
+                    adapter = new PlanDetailAdapter(activity, poll.getPollPlans());
+                    recyclerView.setAdapter(adapter);
 
                 }
                else{
@@ -157,72 +184,4 @@ public class PollDetailActivity extends AppCompatActivity {
         });
     }
 
-
-    public  void  RenderCheckboxPlan(final PollPlan poll){
-        //CardView
-        CardView cardView = new CardView(this);
-        CardView.LayoutParams pramsCardView= new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT,CardView.LayoutParams.WRAP_CONTENT);
-        pramsCardView.setMargins(60,40,60,40);
-        cardView.setLayoutParams(pramsCardView);
-
-        //LinearLayout
-        LinearLayout linearLayoutCardView = new LinearLayout(this);
-        LinearLayout.LayoutParams pramsLinearLayoutCardView= new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT,150);
-        linearLayoutCardView.setLayoutParams(pramsLinearLayoutCardView);
-        //RelativeLayout
-        RelativeLayout relativeLayout = new RelativeLayout(this);
-        RelativeLayout.LayoutParams paramsRelativeLayout =  new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
-        relativeLayout.setLayoutParams(paramsRelativeLayout);
-        //Checkbox
-        final CheckBox checkBox = new CheckBox(this);
-        RelativeLayout.LayoutParams pramsCheckBox= new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        pramsCheckBox.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
-        checkBox.setLayoutParams(pramsCheckBox);
-        checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(checkBox.isChecked()) {
-                    pollPlansCheck.add(poll);
-                }else{
-                    pollPlansCheck.remove(poll);
-                }
-            }
-        });
-        checkBox.setChecked(poll.getCheck());
-        //checkBox.setText(poll.getPlanName());
-
-
-        // add edittext
-        TextView tvContent = new TextView(this);
-        tvContent.setText(poll.getPlanName());
-        tvContent.setTextColor(Color.BLACK);
-        tvContent.setGravity(Gravity.CENTER);
-        RelativeLayout.LayoutParams pramsTextViewContent= new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        tvContent.setLayoutParams(pramsTextViewContent);
-
-        // add edittext User
-        TextView tvUser = new TextView(this);
-        tvUser.setText(poll.getCountUserVote() + " người");
-        tvUser.setTextColor(Color.BLACK);
-        tvUser.setGravity(Gravity.CENTER);
-        RelativeLayout.LayoutParams pramsTextViewUser= new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        pramsTextViewUser.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
-        pramsTextViewUser.setMargins(0,0,30,0);
-        tvUser.setTextColor(Color.parseColor("#ae9450"));
-        tvUser.setLayoutParams(pramsTextViewUser);
-
-        relativeLayout.addView(checkBox);
-        relativeLayout.addView(tvContent);
-        relativeLayout.addView(tvUser);
-
-        linearLayoutCardView.addView(relativeLayout);
-        cardView.addView(linearLayoutCardView);
-        linearLayoutParent.addView(cardView);
-        numberOfLines++;
-    }
-
-
-    public static Intent getIntent(Context context) {
-        return new Intent(context, PollDetailActivity.class);
-    }
 }

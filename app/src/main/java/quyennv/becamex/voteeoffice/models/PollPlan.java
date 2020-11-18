@@ -2,6 +2,9 @@ package quyennv.becamex.voteeoffice.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PollPlan {
     @SerializedName("id")
     private int Id;
@@ -14,6 +17,8 @@ public class PollPlan {
     @SerializedName("countUserVote")
     private int CountUserVote;
 
+    @SerializedName("pollUserPlans")
+    private ArrayList<PollUserPlan>  PollUserPlans;
 
     public PollPlan(int id, int pollId, String planName) {
         Id = id;
@@ -63,5 +68,13 @@ public class PollPlan {
 
     public void setCountUserVote(int countUserVote) {
         CountUserVote = countUserVote;
+    }
+
+    public ArrayList<PollUserPlan> getPollUserPlans() {
+        return PollUserPlans;
+    }
+
+    public void setPollUserPlans( ArrayList<PollUserPlan> userPlans) {
+        PollUserPlans = userPlans;
     }
 }

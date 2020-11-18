@@ -1,5 +1,7 @@
 package quyennv.becamex.voteeoffice.utils;
 
+import android.content.Context;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,5 +27,10 @@ public class Utils {
         }
         return result;
         //  System.out.println(convertedDate);
+    }
+
+    public static int dpToPx(int dp, Context context) {
+        float density = context.getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
     }
 }
