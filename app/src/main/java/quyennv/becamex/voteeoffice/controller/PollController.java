@@ -26,9 +26,6 @@ public class PollController {
             @Override
             public void onResponse(Call<PaginationResult<Poll>> call, Response<PaginationResult<Poll>> response) {
                 if(response.isSuccessful()){
-                    Gson gson = new Gson();
-                    String json = gson.toJson(response.body());
-                    Log.d("GetPallpagination",json);
                 }
             }
 
@@ -44,9 +41,6 @@ public class PollController {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                 if(response.isSuccessful()){
-                    Gson gson = new Gson();
-                    String json = gson.toJson(response.body());
-                    Log.d("AddPoll",json);
 
                     Boolean isAdd =   Boolean.parseBoolean(response.body().toString());
                     if(isAdd){

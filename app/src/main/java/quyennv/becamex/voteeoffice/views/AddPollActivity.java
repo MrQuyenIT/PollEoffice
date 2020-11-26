@@ -129,9 +129,6 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
                         if(response.isSuccessful()){
                             pollEdit = response.body();
 
-                            Gson gson = new Gson();
-                            Log.d("PollDetail",gson.toJson(pollEdit));
-
                             TextInputEditText editText=findViewById(R.id.question);
                             editText.setText(pollEdit.getQuestion());
                             adapter = new PollPlanAddAdapter(activity,  pollEdit.getPollPlans());
@@ -215,8 +212,6 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
         //Validate người mời
 
         List<ContactChip> chipToList = (List<ContactChip>) chipsInputTo.getSelectedChips();
-        Gson gson = new Gson();
-        Log.d("assign",gson.toJson(chipToList));
         for (ContactChip userAssign : chipToList){
             PollUserAssign assign = new PollUserAssign();
              assign.setUserAssign(userAssign.getEmail());
@@ -237,10 +232,6 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
                 @Override
                 public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                     if(response.isSuccessful()){
-                        Gson gson = new Gson();
-                        String json = gson.toJson(response.body());
-                        Log.d("AddPoll",json);
-
                         Boolean isAdd =   Boolean.parseBoolean(response.body().toString());
                         if(isAdd){
                             Toast.makeText(activity,"Thêm bình chọn thành công",Toast.LENGTH_LONG).show();
@@ -370,14 +361,17 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
                     if(action ==Action.EDIT){
                         List<PollUserAssign> userAssign = pollEdit.getPollUserAssign();
                         List<ContactChip> contactChips = new ArrayList<>();
-                        for (PollUserAssign assign : userAssign){
-                            ContactChip contactChip = new ContactChip();
-                            contactChip.setEmail(assign.getUserAssign());
-                            contactChips.add(contactChip);
-                            contactChip.setAvatar(assign.getAvatar());
-                            contactChip.setName(assign.getName());
+                        if(userAssign!=null){
+                            for (PollUserAssign assign : userAssign){
+                                ContactChip contactChip = new ContactChip();
+                                contactChip.setEmail(assign.getUserAssign());
+                                contactChips.add(contactChip);
+                                contactChip.setAvatar(assign.getAvatar());
+                                contactChip.setName(assign.getName());
+                            }
+                            chipsInputTo.setSelectedChipList(contactChips);
                         }
-                        chipsInputTo.setSelectedChipList(contactChips);
+
                     }
 
                 }

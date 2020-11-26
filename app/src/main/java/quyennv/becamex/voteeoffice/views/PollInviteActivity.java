@@ -114,8 +114,6 @@ public class PollInviteActivity extends AppCompatActivity implements PollInviteA
                     contactList.clear();
                     contactList.addAll(response.body());
                     mAdapter.notifyDataSetChanged();
-                    Gson gson = new Gson();
-                    Log.d("list user",gson.toJson(response.body()));
 
                     userProgressBar.setVisibility(View.GONE);
 

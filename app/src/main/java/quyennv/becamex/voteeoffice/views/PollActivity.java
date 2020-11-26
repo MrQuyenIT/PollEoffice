@@ -143,10 +143,6 @@ public class PollActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<PaginationResult<Poll>> call, Response<PaginationResult<Poll>> response) {
                 if(response.isSuccessful()){
-                    Gson gson = new Gson();
-                    String json = gson.toJson(response.body());
-
-                    Log.d("response",json);
 
                     PaginationResult<Poll> data = response.body();
 

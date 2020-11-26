@@ -114,8 +114,6 @@ public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     public void addItems(List<Poll> polls) {
-        Gson gson = new Gson();
-        Log.d("listPolls",gson.toJson(listPolls));
         listPolls.addAll(polls);
         notifyDataSetChanged();
     }
