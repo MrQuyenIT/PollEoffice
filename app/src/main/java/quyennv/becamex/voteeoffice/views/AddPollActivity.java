@@ -129,6 +129,8 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
                         if(response.isSuccessful()){
                             pollEdit = response.body();
 
+                            fetchDataFromServer(pollEdit);
+
                             TextInputEditText editText=findViewById(R.id.question);
                             editText.setText(pollEdit.getQuestion());
                             adapter = new PollPlanAddAdapter(activity,  pollEdit.getPollPlans());
@@ -151,6 +153,7 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
                 });
             }
             else{
+                fetchDataFromServer(new Poll());
                 RenderViewPlanNew();
             }
         }
@@ -158,7 +161,6 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
             RenderViewPlanNew();
         }
 
-        fetchDataFromServer();
     }
 
     public void RenderViewPlanNew(){
@@ -346,7 +348,7 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
 
     }
 
-    private void fetchDataFromServer() {
+    private void fetchDataFromServer(final Poll poll) {
         progressBar.setVisibility(View.VISIBLE);
         apiService.GetAllUser().enqueue(new Callback<List<ContactChip>>() {
             @Override
@@ -359,7 +361,7 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
 
 
                     if(action ==Action.EDIT){
-                        List<PollUserAssign> userAssign = pollEdit.getPollUserAssign();
+                        List<PollUserAssign> userAssign = poll.getPollUserAssign();
                         List<ContactChip> contactChips = new ArrayList<>();
                         if(userAssign!=null){
                             for (PollUserAssign assign : userAssign){
