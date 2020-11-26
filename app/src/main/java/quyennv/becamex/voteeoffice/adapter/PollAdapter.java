@@ -24,6 +24,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import java.time.Instant;
@@ -40,6 +41,7 @@ import quyennv.becamex.voteeoffice.models.PollPlan;
 import quyennv.becamex.voteeoffice.models.PollUserPlan;
 import quyennv.becamex.voteeoffice.remote.IPollService;
 import quyennv.becamex.voteeoffice.remote.NetworkClient;
+import quyennv.becamex.voteeoffice.ui.CircularImageView;
 import quyennv.becamex.voteeoffice.utils.Utils;
 import quyennv.becamex.voteeoffice.views.AddPollActivity;
 import quyennv.becamex.voteeoffice.views.PollDetailActivity;
@@ -165,6 +167,9 @@ public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @BindView(R.id.list_plan_view)
         public LinearLayout linearLayoutViewPlan;
 
+        @BindView(R.id.avatar)
+        public CircularImageView avatar;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -181,8 +186,12 @@ public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
 
             final Poll poll = listPolls.get(position);
+
+            Glide.with(context).load(poll.getAvatar()).override(Utils.dpToPx(60, context)).into(avatar);
+
             title.setText(poll.getQuestion());
             user_created.setText(poll.getName());
+
 
             String dateCreated  =  Utils.ConvertStringDateToString(poll.getDateCreated(), "yyyy-MM-dd'T'HH:mm:ss", "dd/MM/yyyy HH:mm", "UTC");
             poll_created.setText(dateCreated);
@@ -223,7 +232,7 @@ public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 linearLayoutViewPlan.addView(RenderViewPlan(plan));
             }
 
-            numberPoll.setText(countAllUserpoll +" người đã bình chọn" );
+            numberPoll.setText(countAllUserpoll +" lượt bình chọn" );
 
             img_poll_delete.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -304,6 +313,8 @@ public class PollAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
             public void onBind(int position) {
                 super.onBind(position);
+
+
             }
     }
 

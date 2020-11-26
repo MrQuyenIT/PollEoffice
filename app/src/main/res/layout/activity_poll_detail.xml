@@ -34,12 +34,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/layout_toolbar"
-        android:padding="10dp"
-        >
+        android:padding="10dp">
+
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-        >
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,73 +47,86 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
                     <quyennv.becamex.voteeoffice.ui.CircularImageView
-                        android:src="@mipmap/ic_launcher"
+                        android:id="@+id/avatar"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_alignParentStart="true"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/avatar">
-                    </quyennv.becamex.voteeoffice.ui.CircularImageView>
+                        android:src="@mipmap/ic_launcher"></quyennv.becamex.voteeoffice.ui.CircularImageView>
+
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/avatar">
+
                         <TextView
                             android:id="@+id/nameCreated"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/dateCreated"
                             android:text="Nguyễn Văn Quyền"
                             android:textSize="18sp"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/dateCreated"
-                            android:layout_below="@+id/nameCreated"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="19/11/2020 10:00"/>
+                            android:layout_alignParentRight="true"
+                            android:text="19/11/2020 10:00" />
 
+                        <LinearLayout
+                            android:id="@+id/userAssign"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/nameCreated"
+                            android:gravity="center_vertical">
+                            <TextView
+                                android:id="@+id/dateCreated1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:text="Thành viên tham gia: " />
+
+                        </LinearLayout>
                     </RelativeLayout>
                 </RelativeLayout>
 
                 <TextView
                     android:id="@+id/question"
-                    android:layout_margin="@dimen/margin_two_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textColor="#000000"
+                    android:layout_margin="@dimen/margin_two_view"
                     android:text="Lấy ý kiến đánh giá khách hàng về một số thay đổi?"
-                    />
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycleViewPlan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:clipToPadding="false">
-                </androidx.recyclerview.widget.RecyclerView>
+                    android:clipToPadding="false"></androidx.recyclerview.widget.RecyclerView>
 
 
-                <LinearLayout
-                    android:id="@+id/list_plan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingTop="50dp"></LinearLayout>
             </LinearLayout>
 
 
         </FrameLayout>
 
     </ScrollView>
+
     <LinearLayout
         android:id="@+id/newCommentContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_alignParentBottom="true"
+        android:gravity="center"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"

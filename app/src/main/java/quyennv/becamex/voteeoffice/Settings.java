@@ -28,7 +28,7 @@ public class Settings {
     }
 
     public String getUserNameKey() {
-        String value = settings.getString(USER_NAME_KEY, "ky.nt");
+        String value = settings.getString(USER_NAME_KEY, "quyen.nv");
         return value;
     }
 

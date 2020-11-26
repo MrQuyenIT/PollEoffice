@@ -34,6 +34,8 @@ public interface IPollService {
     Call<Boolean> addPoll(@Body Poll  poll);
     @PUT("/api/Poll/UpdatePoll")
     Call<Boolean> updatePoll(@Body Poll  poll);
+    @GET("/api/Poll/ClosePoll")
+    Call<Boolean> closePoll(@Query("id") int id);
     @DELETE("/api/Poll/DeletePoll")
     Call<Boolean> deletePoll(@Query("id") int id);
 

@@ -27,9 +27,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import quyennv.becamex.voteeoffice.BaseViewHolder;
 import quyennv.becamex.voteeoffice.R;
-import quyennv.becamex.voteeoffice.models.Poll;
 import quyennv.becamex.voteeoffice.models.PollPlan;
+import quyennv.becamex.voteeoffice.models.PollUserAssign;
 import quyennv.becamex.voteeoffice.models.PollUserPlan;
+import quyennv.becamex.voteeoffice.models.UserDialog;
 import quyennv.becamex.voteeoffice.ui.CircularImageView;
 import quyennv.becamex.voteeoffice.utils.Utils;
 
@@ -37,9 +38,12 @@ public class PlanDetailAdapter  extends RecyclerView.Adapter<BaseViewHolder> {
     private  Context context;
     private  List<PollPlan> pollPlans;
     private List<PollPlan> pollPlansCheck = new ArrayList<>();
+
+    private PollUserDialogAdapter adapter;
     public PlanDetailAdapter(Context context, List<PollPlan> pollPlans){
         this.context  = context;
         this.pollPlans = pollPlans;
+
     }
 
     @NonNull
@@ -89,7 +93,8 @@ public class PlanDetailAdapter  extends RecyclerView.Adapter<BaseViewHolder> {
             super.onBind(position);
 
             final PollPlan pollPlan = pollPlans.get(position);
-            planName.setText(pollPlan.getPlanName());
+
+             planName.setText(pollPlan.getPlanName());
             checkbox.setChecked(pollPlan.getCheck());
             if(pollPlan.getCheck()){
                 planName.setBackground(ContextCompat.getDrawable(context, R.drawable.poll_rounded_border));
@@ -111,16 +116,33 @@ public class PlanDetailAdapter  extends RecyclerView.Adapter<BaseViewHolder> {
             linearLayoutUserPlan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    ArrayList<UserDialog> userDialogs = new ArrayList<>();
+                    for (PollUserPlan plan : pollPlan.getPollUserPlans()){
+                        userDialogs.add(new UserDialog(plan.getAvatar(),plan.getName()));
+                    }
+
+                    adapter = new PollUserDialogAdapter(context,userDialogs);
+
                     final AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Danh sách người chọn");
 
                     // set the custom layout
                     final View customLayout = ((Activity)context).getLayoutInflater().inflate(R.layout.row_poll_user,null);
-                    builder.setView(customLayout);
+                    //builder.setView(customLayout);
                     builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                         }
                     });
+
+                    builder.setAdapter(adapter,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int item) {
+                                    dialog.dismiss();
+                                }
+                            });
 
                     AlertDialog dialog = builder.create();
                     dialog.show();

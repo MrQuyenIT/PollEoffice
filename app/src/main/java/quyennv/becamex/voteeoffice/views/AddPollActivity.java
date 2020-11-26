@@ -4,6 +4,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -19,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -36,7 +40,9 @@ import java.util.List;
 import quyennv.becamex.voteeoffice.GlideRenderer;
 import quyennv.becamex.voteeoffice.R;
 import quyennv.becamex.voteeoffice.Settings;
+import quyennv.becamex.voteeoffice.adapter.PlanDetailAdapter;
 import quyennv.becamex.voteeoffice.adapter.PollInviteAdapter;
+import quyennv.becamex.voteeoffice.adapter.PollPlanAddAdapter;
 import quyennv.becamex.voteeoffice.enums.Action;
 import quyennv.becamex.voteeoffice.models.ContactChip;
 import quyennv.becamex.voteeoffice.models.ObjectSearch;
@@ -55,16 +61,20 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
     private IPollService apiService;
     private Activity activity;
     private Toolbar mToolBar;
-    private int numberOfLines = 1;
     Settings settings;
     private ProgressDialog progress;
     Intent intent;
     private ProgressBar progressBar;
     ChipsInputLayout chipsInputTo;
     Action action;
-    Poll pollEdit;
+    Poll pollEdit = new Poll();
     private ArrayList<EditText> listEditText = new ArrayList<>();
     private ArrayList<PollUserAssign> pollUserAssigns = new ArrayList<>();
+
+
+    private PollPlanAddAdapter adapter;
+    private RecyclerView recyclerView;
+    ArrayList<PollPlan> listPollPlan =  new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +93,12 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
         progress.setMessage("Đang thêm bình chọn...");
         progress.setIndeterminate(false);
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+        //Recycle
+        LinearLayoutManager llm = new LinearLayoutManager(activity);
+        recyclerView = (RecyclerView) findViewById(R.id.recycleViewPlan);
+        recyclerView.setLayoutManager(llm);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         //Chip input layout
         chipsInputTo = (ChipsInputLayout) findViewById(R.id.chips_input_layout_to);
@@ -118,14 +134,8 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
 
                             TextInputEditText editText=findViewById(R.id.question);
                             editText.setText(pollEdit.getQuestion());
-
-
-
-
-                            for (PollPlan plan : pollEdit.getPollPlans())
-                            {
-                                RenderViewPlan(plan);
-                            }
+                            adapter = new PollPlanAddAdapter(activity,  pollEdit.getPollPlans());
+                            recyclerView.setAdapter(adapter);
                         }
                         else{
                             Toast.makeText(activity,"Không có dữ liệu",Toast.LENGTH_LONG).show();
@@ -158,8 +168,10 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
         action= Action.ADD;
         //Render View thêm mới
         for (int i=1;i<=2;i++){
-            RenderViewPlan(new PollPlan());
+            listPollPlan.add(new PollPlan());
         }
+        adapter = new PollPlanAddAdapter(activity, listPollPlan);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -191,17 +203,8 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
         Poll request = new Poll();
         request.setQuestion(question);
         request.setUserCreated(settings.getUserNameKey());
-        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.list_plan);
 
-        ArrayList<PollPlan> listPlan = new ArrayList<>();
-        for (int i = 0, count = linearLayout.getChildCount(); i < count; ++i) {
-            CardView cardView = (CardView) linearLayout.getChildAt(i);
-            TextInputLayout layoutTextView = (TextInputLayout) cardView.getChildAt(0);
-
-            if (layoutTextView instanceof TextInputLayout) {
-                listPlan.add(new PollPlan(cardView.getId(),0,layoutTextView.getEditText().getText().toString()));
-            }
-        }
+        ArrayList<PollPlan> listPlan = getPollPlansInRecycleView();
 
         //Validate form
         if(!validateForm(question,listPlan)){
@@ -302,6 +305,20 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
 
     }
 
+    public ArrayList<PollPlan>  getPollPlansInRecycleView(){
+        ArrayList<PollPlan> listPlan = new ArrayList<>();
+        for (int i = 0, count = recyclerView.getChildCount(); i < count; ++i) {
+            CardView cardView = (CardView) recyclerView.getChildAt(i);
+            RelativeLayout relativeLayout = (RelativeLayout) cardView.getChildAt(0);
+            TextInputLayout layoutTextView = (TextInputLayout) relativeLayout.getChildAt(0);
+
+            if (layoutTextView instanceof TextInputLayout) {
+                listPlan.add(new PollPlan(cardView.getId(),0,layoutTextView.getEditText().getText().toString()));
+            }
+        }
+
+        return  listPlan;
+    }
 
     public  void  invitePoll(View v){
         Intent intent = new Intent(this, PollInviteActivity.class);
@@ -391,62 +408,9 @@ public class AddPollActivity extends AppCompatActivity implements ChipDataSource
     }
 
     public void addPlan(View v) {
-        RenderViewPlan(new PollPlan());
-    }
-
-    public void removePlan(View v) {
-        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.list_plan);
-        int childCount = linearLayout.getChildCount();
-        if(childCount>2){
-            numberOfLines= childCount;
-            linearLayout.removeViewAt(childCount-1);
-        }
-        else{
-            Toast.makeText(this,"Ít nhất 2 phương án!",Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void RenderViewPlan(PollPlan pollPlan){
-        LinearLayout linearLayoutSubParent = (LinearLayout) findViewById(R.id.list_plan);
-
-        //CardView
-        CardView cardView = new CardView(this);
-        cardView.setId(pollPlan.getId());
-        CardView.LayoutParams pramsCardView= new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT,CardView.LayoutParams.WRAP_CONTENT);
-        pramsCardView.setMargins(60,30,50,60);
-        cardView.setLayoutParams(pramsCardView);
-        //Text layout
-        TextInputLayout textInputLayout = new TextInputLayout(this, null, R.style.Widget_MaterialComponents_TextInputLayout_OutlinedBox);
-        textInputLayout.setHint("Phương án "+numberOfLines);
-        textInputLayout.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
-        textInputLayout.setEndIconMode(END_ICON_CLEAR_TEXT);
-        TextInputLayout.LayoutParams pramsTextInputLayout= new TextInputLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        textInputLayout.setLayoutParams(pramsTextInputLayout);
-
-
-        // add edittext
-        EditText et = new EditText(this);
-        et.setId(numberOfLines);
-        et.setText(pollPlan.getPlanName());
-
-        LinearLayout.LayoutParams editTextParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        et.setLayoutParams(editTextParams);
-        et.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
-        et.setTextSize(16);
-        et.clearComposingText();
-        et.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-        textInputLayout.addView(et);
-
-        cardView.addView(textInputLayout);
-
-        linearLayoutSubParent.addView(cardView);
-        numberOfLines++;
-    }
-
-
-    public static Intent getIntent(Context context) {
-        return new Intent(context, AddPollActivity.class);
+        ArrayList<PollPlan> listPlan = getPollPlansInRecycleView();
+        listPlan.add(new PollPlan());
+        adapter.addPlan(listPlan);
     }
 
     @Override

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/cardView"
+android:layout_below="@+id/layout_to"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginLeft="15dp"
+android:layout_marginTop="15dp"
+android:layout_marginRight="15dp"
+android:layout_weight="1">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="#fff">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/planName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <quyennv.becamex.voteeoffice.ui.CircularImageView
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/ic_close_plan"
+        android:layout_alignParentEnd="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/deletePlan">
+    </quyennv.becamex.voteeoffice.ui.CircularImageView>
+</RelativeLayout>
+</androidx.cardview.widget.CardView>
